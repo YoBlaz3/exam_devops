@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if current_user.is_authenticated %} 
+    <h1 class="title my-3 font-weight-bold text-center text-black">Расписание</h1>
+    <div class="container">
+        <div class="h-100 text-center d-flex p-3">
+            <div class="m-auto">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Название фильма</th>
+                            <th scope="col">Продолжительность</th>
+                            <th scope="col">Время сеанса</th>
+                            <th scope="col">Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for film in films %}
+                        <tr>
+                            <td class="book-title">{{ film.title }}</td>
+                            <td>{{ film.duration }}</td>
+                            <td>{{ film.time }}</td>
+                            <td>{{ film.description }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
